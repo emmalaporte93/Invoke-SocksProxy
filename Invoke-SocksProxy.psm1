@@ -377,6 +377,3 @@ function Get-IpAddress{
     }
     return $ip2
 }
-
-export-modulemember -function Invoke-SocksProxy
-export-modulemember -function Invoke-ReverseSocksProxy
