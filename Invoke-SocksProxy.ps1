@@ -297,11 +297,8 @@ function Invoke-ReverseSocksProxy{
                         $client = $ret[0]
                         $cliStream_clear = $ret[1]
                 }
-                if($certFingerprint -eq ''){
-                    $cliStream = New-Object System.Net.Security.SslStream($cliStream_clear,$false,({$true} -as[Net.Security.RemoteCertificateValidationCallback]));
-                }else{
-                    $cliStream = New-Object System.Net.Security.SslStream($cliStream_clear,$false,({return $args[1].GetCertHashString() -eq $certFingerprint } -as[Net.Security.RemoteCertificateValidationCallback]));
-                }
+                $cliStream = $cliStream_clear;
+                
                 $cliStream.AuthenticateAsClient($remoteHost)
                 Write-Host "Connected"
                 $currentTry = 0;
