@@ -13,8 +13,8 @@ def main(handlerPort, proxyPort, certificate, privateKey):
 
 
 def handlerServer(q, handlerPort, certificate, privateKey):
-    context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
-    context.load_cert_chain(certificate, privateKey)
+    #context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    #context.load_cert_chain(certificate, privateKey)
     try:
         dock_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         dock_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -24,7 +24,8 @@ def handlerServer(q, handlerPort, certificate, privateKey):
         while True:
             try:
                 clear_socket, address = dock_socket.accept()
-                client_socket = context.wrap_socket(clear_socket, server_side=True)
+               # client_socket = context.wrap_socket(clear_socket, server_side=True)
+                client_socket = clear_socket
                 print("Reverse Socks Connection Received: {}:{}".format(address[0], address[1]))
                 try:
                     data = b""
