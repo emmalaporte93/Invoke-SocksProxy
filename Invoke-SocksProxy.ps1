@@ -298,7 +298,7 @@ function Invoke-ReverseSocksProxy{
                         $cliStream_clear = $ret[1]
                 }
                 $cliStream = $cliStream_clear;
-                
+                Write-Host "Trying to auth..."
                 $cliStream.AuthenticateAsClient($remoteHost)
                 Write-Host "Connected"
                 $currentTry = 0;
