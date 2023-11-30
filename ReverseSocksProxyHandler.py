@@ -36,6 +36,7 @@ def handlerServer(q, handlerPort, certificate, privateKey):
                         b"HTTP/1.1 200 OK\nContent-Length: 999999\nContent-Type: text/plain\nConnection: Keep-Alive\nKeep-Alive: timeout=20, max=10000\n\n")
                     q.get(False)
                 except Exception as e:
+                    print(e)
                     pass
                 q.put(client_socket)
             except Exception as e:
