@@ -323,6 +323,7 @@ function Invoke-ReverseSocksProxy{
                 $PS3.BeginInvoke() | Out-Null
                 Write-Host "Threads Left:" $rsp.GetAvailableRunspaces()
             }catch{
+                 Write-Host $_
                 $currentTry = $currentTry + 1;
                 if (($maxRetries -ne 0) -and ($currentTry -eq $maxRetries)){
                     Throw "Cannot connect to handler, max Number of attempts reached, exiting";
