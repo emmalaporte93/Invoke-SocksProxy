@@ -341,6 +341,7 @@ function Invoke-ReverseSocksProxy{
                     $client.Close()
                     $client.Dispose()
                 }catch{}
+                    Write-Host $_
                     sleep -Milliseconds 200
                 }
         }
