@@ -30,7 +30,7 @@ def handlerServer(q, handlerPort, certificate, privateKey):
                 try:
                     data = b""
                     while (data.count(b'\n') < 3):
-                        data_recv = client_socket.recv()
+                        data_recv = client_socket.recv(99999)
                         data += data_recv
                     client_socket.send(
                         b"HTTP/1.1 200 OK\nContent-Length: 999999\nContent-Type: text/plain\nConnection: Keep-Alive\nKeep-Alive: timeout=20, max=10000\n\n")
